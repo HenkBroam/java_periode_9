@@ -1,5 +1,7 @@
 package section2_syntax.part1_datatypes;
 
+import java.util.ArrayList;
+
 /**
  * Creation date: May 28, 2018
  *
@@ -32,32 +34,32 @@ public class Datatypes {
     String correctDataType1() {
         //USAGE: the age of the universe in whole years. Change the return value -null- to a correct value
         //- the name of the data type that is correct here
-        return null;
+        return "long";
     }
 
     String correctDataType2() {
         //USAGE: the turnover of ATP in a cell, in Molar per minute
-        return null;
+        return "float";
     }
 
     String correctDataType3() {
         //USAßGE: the molecular weight of a protein, in Daltons
-        return null;
+        return "float";
     }
 
     String correctDataType4() {
         //USAGE: the alive/death status of a test animal
-        return null;
+        return "boolean";
     }
 
     String correctDataType5() {
         //USAGE: the name of an app user
-        return null;
+        return "String";
     }
 
     String correctDataType6() {
         //USAGE: encoding of human gender (Male, Female, Undefined)
-        return null;
+        return "char";
     }
 
     /* NEW SECTION OF ASSIGNMENTS */
@@ -70,15 +72,16 @@ public class Datatypes {
      * Only then the test with the same name will pass (in class DatatypesTest)
      */
     double determineGCfraction(String theDNA) {
-//        int gcCount;
-//        for (int i = 0; i < theDNA.length(); i++) {
-//            char nucleotide = theDNA.charAt(i);
-//            if (nucleotide == 'C' || nucleotide == 'G') {
-//                gcCount++;
-//            }
-//        }
-//        double fraction = gcCount/theDNA.length();
-        return 0;
+        int gcCount = 0;
+        theDNA = theDNA.toUpperCase();
+        for (int i = 0; i < theDNA.length(); i++) {
+            char nucleotide = theDNA.charAt(i);
+            if (nucleotide == 'C' || nucleotide == 'G') {
+                gcCount++;
+            }
+        }
+        double fraction = (double)gcCount/theDNA.length();
+        return fraction;
     }
 
     /**
@@ -89,7 +92,7 @@ public class Datatypes {
      */
     String modifyString() {
         String input = "where can I find the coffeemachine in this building?";
-        replaceWord(input, "coffee", "soda");
+        input = replaceWord(input, "coffee", "soda");
         return input;
     }
 
@@ -97,6 +100,7 @@ public class Datatypes {
      * This method is linked to the method above as a single assignment.
      */
     String replaceWord(String input, String replace, String replaceWith) {
+
         return input.replace(replace, replaceWith);
     }
 
@@ -106,7 +110,17 @@ public class Datatypes {
      * For any Java object you can use object.toString() to get this string representation
      */
     String[] getFirstAndLastAsStringRepresentation(Object[] input) {
-        return null;
+
+        String[] result = new String[2]; /**/
+
+        if (input.length > 0) {
+
+            result[0] = input[0].toString();
+
+            result[1] = input[input.length - 1].toString();
+        }
+
+        return result;
     }
 
     /**
@@ -116,11 +130,11 @@ public class Datatypes {
      * @return cubedInput
      */
     int[] cubeAll(int[] input) {
-        int arrayLength = 0; //YOU SHOULD GET THE CORRECT ARRAY LENGTH FIRST
+        int arrayLength = input.length; //YOU SHOULD GET THE CORRECT ARRAY LENGTH FIRST
         for(int i = 0; i < arrayLength; i++) {
-            //YOUR ITERATION CODE HERE
+            input[i] = (int) Math.pow(input[i],3);
         }
-        return null;
+        return input;
     }
 
     /**
@@ -129,7 +143,10 @@ public class Datatypes {
      * @return the cumulative product
      */
     int cumulativeProduct(int[] input) {
-        return 0;
+        int total = input[0];
+        for(int i = 1; i < input.length; i++)
+            total *= input[i];
+        return total;
     }
 
 }
