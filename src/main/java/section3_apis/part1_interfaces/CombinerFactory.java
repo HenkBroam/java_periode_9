@@ -11,8 +11,12 @@ public class CombinerFactory {
      * @return quotedCombiner
      */
     static StringCombiner getQuotedCombiner() {
-        //YOUR CODE HERE (and remove the throw statement)
-        throw new UnsupportedOperationException("Not implemented yet");
+        return new StringCombiner() {
+            @Override
+            public String combine(String first, String second) {
+                return "'" + "\"" + first + "\" \"" + second + "\"" + "'";
+            }
+        };
     }
 
     /**
@@ -27,8 +31,16 @@ public class CombinerFactory {
      * @return reversedCombiner
      */
     static StringCombiner getReversedCombiner() {
-        //YOUR CODE HERE (and remove the throw statement)
-        throw new UnsupportedOperationException("Not implemented yet");
+        return new StringCombiner() {
+            @Override
+            public String combine(String first, String second) {
+                String reversedFirst = new StringBuilder(first).reverse().toString();
+                String reversedSecond = new StringBuilder(second).reverse().toString();
+
+                return first + reversedFirst + " " + second + reversedSecond;
+            }
+        };
+
     }
 
     /**
@@ -47,8 +59,22 @@ public class CombinerFactory {
      * @return reversedCombiner
      */
     static StringCombiner getAsciiSumCombiner() {
-        //YOUR CODE HERE (and remove the throw statement)
-        throw new UnsupportedOperationException("Not implemented yet");
+        return new StringCombiner() {
+            @Override
+            public String combine(String first, String second) {
+                int sumFirst = 0;
+                for (char c : first.toCharArray()) {
+                    sumFirst += c;
+                }
+
+                int sumSecond = 0;
+                for (char c : second.toCharArray()) {
+                    sumSecond += c;
+                }
+
+                return sumFirst + " " + sumSecond;
+            }
+        };
     }
 
 }
