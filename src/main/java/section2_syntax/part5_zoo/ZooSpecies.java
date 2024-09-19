@@ -37,7 +37,7 @@ public class ZooSpecies {
      * This is a static factory method that registers ZooAnimal instances.
      * The keyword `static` marks a variable or method to be class-level.
      * This means it is not associated with an object (instance) but with the class: all instances of the class share
-     * the same datafield. If one of them changes it, all instances share that changed field.
+     * the same datafield. If one of them changes it, all instances share that changed field. temp
      * @param speciesName the species name
      */
     public static void registerSpeciesFromString(String speciesName) {
