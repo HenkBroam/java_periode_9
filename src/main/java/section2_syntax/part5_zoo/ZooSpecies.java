@@ -3,16 +3,18 @@ package section2_syntax.part5_zoo;
 import java.util.*;
 
 public class ZooSpecies {
-    private static Map<String, ZooSpecies> zooAnimals = new HashMap<>();
+    private static final Map<String, ZooSpecies> zooAnimals = new HashMap<>();
     private final String speciesName;
     private int individualCount;
 
     /**
      * A private constructor; instances will only be created within the factory method "registerSpeciesFromString".
-     * @param speciesName
      */
-    private ZooSpecies(String speciesName) {
+    ZooSpecies(String speciesName) {
         this.speciesName = speciesName;
+    }
+
+    public static void addSpecies(ZooSpecies newSpecies) {
     }
 
     /**
@@ -40,10 +42,10 @@ public class ZooSpecies {
      */
     public static void registerSpeciesFromString(String speciesName) {
         ZooSpecies zooSpecies;
-        if (! zooAnimals.containsKey(speciesName)) { // it is not registered yet
+        if (! zooAnimals.containsKey(speciesName)) {
             zooSpecies = new ZooSpecies(speciesName);
             zooAnimals.put(speciesName, zooSpecies);
-        } else { // already know species
+        } else {
             zooSpecies = zooAnimals.get(speciesName);
         }
         zooSpecies.individualCount++;
@@ -54,8 +56,6 @@ public class ZooSpecies {
      * @return allSpecies
      */
     public static List<ZooSpecies> getAllSpecies() {
-        List<ZooSpecies> species = new ArrayList<>();
-        species.addAll(ZooSpecies.zooAnimals.values());
-        return species;
+        return new ArrayList<>(ZooSpecies.zooAnimals.values());
     }
 }
